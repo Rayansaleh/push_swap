@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../libft/includes/libft.h" 
 #include <stdio.h>
 
 int	select_sort(t_ps *a, int bin)
@@ -44,11 +45,20 @@ int	default_sort(t_ps *a, t_ps *b)
 	{
 		i_max = ft_find_max(*a, &max);
 		if (max == a->list[a->size - 1])
+		{
+			ft_putstr("pb\n");
 			curr += ft_push(a, b);
+		}
 		else if (i_max > (a->size / 2))
+		{
+			ft_putstr("ra\n");
 			curr += ft_rotate(a, NULL);
+		}
 		else
+		{
+			ft_putstr("rra\n");
 			curr += ft_revrotate(a, NULL);
+		}
 	}
 	curr += slist_of_three(a);
 	curr += empty_list(a, b);
@@ -65,21 +75,35 @@ int	slist_of_three(t_ps *clist)
 	while (!(tmp[0] > tmp[1] && tmp[1] > tmp[2]))
 	{
 		if (tmp[0] > tmp[1] && tmp[1] < tmp[2] && tmp[0] < tmp[2])
+		{
+			ft_putstr("ra\n");
 			curr += ft_rotate(clist, NULL);
+		}
 		else if (tmp[0] < tmp[1] && tmp[1] > tmp[2] && tmp[0] < tmp[2])
+		{
+			ft_putstr("rra\n");
 			curr += ft_revrotate(clist, NULL);
+		}
 		else
+		{
+			ft_putstr("sa\n");
 			curr += ft_swap_ab(clist, NULL);
+		}
 	}
 	return (curr);
 }
 
 int	ft_simplesort(t_ps *a)
 {
+	ft_putstr("rra\n");
 	ft_revrotate(a, NULL);
+	ft_putstr("rra\n");
 	ft_revrotate(a, NULL);
+	ft_putstr("sa\n");
 	ft_swap_ab(a, NULL);
+	ft_putstr("ra\n");
 	ft_rotate(a, NULL);
+	ft_putstr("ra\n");
 	ft_rotate(a, NULL);
 	return (5);
 }
@@ -93,11 +117,15 @@ int	ft_sort(t_ps *a, t_ps *b, int wsort)
 		curr += slist_of_three(a);
 	else if (wsort == 3)
 	{
+		ft_putstr("sa\n");
 		curr += ft_swap_ab(a, NULL);
 		curr += ft_simplesort(a);	
 	}
 	else if (wsort == 4)
+	{
+		ft_putstr("sa\n");
 		curr += ft_swap_ab(a, NULL);
+	}
 	else if (wsort == 2)
 		curr += ft_simplesort(a);
 	else

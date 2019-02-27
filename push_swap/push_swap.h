@@ -22,6 +22,9 @@ typedef struct	s_ps
 
 int				ft_find_max(t_ps s, int *max);
 int				empty_list(t_ps *dest, t_ps *src);
+int				ft_is_int(char **nblist);
+int				ft_is_intmax(char **nblist);
+int				ft_is_twice(char **nblist);
 int				ft_swap_ab(t_ps *a, t_ps *b);
 int				ft_push(t_ps *a, t_ps *b);
 int				ft_rotate(t_ps *a, t_ps *b);

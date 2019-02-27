@@ -19,9 +19,9 @@ void	fill_list(t_ps *ret, char **av)
 	int	*tmp;
 	int	i;
 
-	i = 0;
+	i = ret->size + 1; 
 	tmp = ret->list;
-	while (av[++i])
+	while (--i)
 	{
 		*tmp = ft_atoi(av[i]);
 		tmp++;
@@ -53,24 +53,30 @@ void	ft_push_swap(t_ps a)
 		return ;
 	b.size = 0;
 	if (a.size > 2 && (wsort = select_sort(&a, 0)))
+		curr = ft_sort(&a, &b, wsort);
+	else if (a.size == 2 && select_sort(&a, 0))
 	{
-		curr = ft_sort(&a, &b, wsort);	
+		ft_putstr("sa\n");
+		ft_swap_ab(&a, NULL);
 	}
 }
 
 int	main(int ac, char **av)
 {
-	t_ps a;
+	t_ps	a;
+	int	i;
 
 	if (ac < 2)
 		return (0);
-	a = create_list(av);
-	ft_push_swap(a);
-	while (a.size)
+	if (!ft_is_twice(av) || !ft_is_int(av) || !ft_is_intmax(av))
 	{
-		printf("%d\n", *a.list);
-		a.list++;
-		a.size--;
+		ft_putstr("Error\n");
+		return (0);
 	}
+	a = create_list(av);
+	i = a.size;
+	ft_push_swap(a);
+	while (--i >= 0)
+		printf("%d\n", a.list[i]);
 	return (0);
 }

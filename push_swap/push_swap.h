@@ -6,7 +6,7 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 17:43:57 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/01/28 18:54:05 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/02/27 18:11:13 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ int				ft_revrotate(t_ps *a, t_ps *b);
 int				slist_of_three(t_ps *clist);
 int				select_sort(t_ps *a, int bin);
 int				ft_sort(t_ps *a, t_ps *b, int wsort);
+int				ft_check_swap(t_ps *s);
 #endif

@@ -6,7 +6,7 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:32:47 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/02/27 18:13:39 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/02 19:08:48 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,46 @@ t_ps	create_checker_list(char **av)
 	i = 1;
 	while (av[i])
 		i++;
-	if (!(ret.list = (int*)malloc(sizeof(int) * i)))
+	if (!(ret.list = (int*)malloc(sizeof(int) * i + 1)))
 		return (ret);
 	ret.size = i - 1;
 	fill_check_list(&ret, av);
 	return (ret);
 }
 
-void ft_checker(t_ps a, char **tst)
+void ft_checker(t_ps *a, t_ps *b, char **tst)
 {
-	ft_check_swap(&a);
+	if (**tst == 's')
+	{
+		(*tst)++;
+		(**tst == 'b') ? ft_check_swap(b) : 0;
+		(**tst == 'a') ? ft_check_swap(a) : 0;
+	}
+	else if (**tst == 'p')
+	{
+		(*tst)++;
+		(**tst == 'a') ? ft_check_push(b, a) : 0;
+		(**tst == 'b') ? ft_check_push(a, b) : 0;
+	}
+	else if (**tst == 'r')
+	{
+		(*tst)++;
+		(**tst == 'a') ? ft_check_rotate(a) : 0;
+		(**tst == 'b') ? ft_check_rotate(b) : 0;
+		if (**tst == 'r')
+		{
+			(*tst)++;
+			(**tst == 'a') ? ft_check_revrotate(a) : 0;
+			(**tst == 'b') ? ft_check_revrotate(b) : 0;	
+		}
+	}
 }
 
 int	main(int ac, char **av)
 {
 	char	*tst;
 	t_ps	a;
+	t_ps	b;
 	int		i;
 
 	i = -1;
@@ -64,10 +88,14 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	a = create_checker_list(av);
-	ft_checker(a, &tst);
+	if (!(b.list = (int*)malloc(sizeof(int) * a.size)))
+		return (0);
+	while (get_next_line(0, &tst) != 0)
+		ft_checker(&a, &b, &tst);
 	while (++i < a.size)
-		printf("%d\n", a.list[i]);
-	//while (get_next_line(0, &tst) != 0)
-	//	ft_checker(a);
+		printf("%d: %d\n", i, a.list[i]);
+	i = -1;
+	while (++i < b.size)
+		printf("%d: %d\n", i, b.list[i]);
 	return (0);
 }

@@ -6,12 +6,11 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:06:07 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/03/02 19:08:53 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:41:00 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
 int	ft_check_swap(t_ps *s)
 {
@@ -21,13 +20,12 @@ int	ft_check_swap(t_ps *s)
 
 	tmp = s->list;
 	size = s->size;
-	printf("size:%d\n", size);
 	if (s->size < 2)
 		return (0);
 	temp = tmp[0];
 	tmp[0] = tmp[1];
 	tmp[1] = temp;
-	return(1);
+	return (1);
 }
 
 int	ft_check_push(t_ps *s, t_ps *s2)
@@ -43,10 +41,9 @@ int	ft_check_push(t_ps *s, t_ps *s2)
 	return (1);
 }
 
-int ft_check_rotate(t_ps *s)
+int	ft_check_rotate(t_ps *s)
 {
 	int val;
-	int i;
 
 	if (s->size < 2)
 		return (0);

@@ -6,13 +6,12 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 16:42:53 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/01/28 20:40:41 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:57:15 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include "../libft/includes/libft.h" 
-#include <stdio.h>
+#include "../libft/includes/libft.h"
 
 int	select_sort(t_ps *a, int bin)
 {
@@ -36,33 +35,31 @@ int	select_sort(t_ps *a, int bin)
 
 int	default_sort(t_ps *a, t_ps *b)
 {
-	int	curr;
 	int	max;
-	int	i_max;
 
-	curr = 0;
+	a->curr = 0;
 	while (a->size > 3)
 	{
-		i_max = ft_find_max(*a, &max);
+		a->i_max = ft_find_max(*a, &max);
 		if (max == a->list[a->size - 1])
 		{
 			ft_putstr("pb\n");
-			curr += ft_push(a, b);
+			a->curr += ft_push(a, b);
 		}
-		else if (i_max > (a->size / 2))
+		else if (a->i_max > (a->size / 2))
 		{
 			ft_putstr("ra\n");
-			curr += ft_rotate(a, NULL);
+			a->curr += ft_rotate(a, NULL);
 		}
 		else
 		{
 			ft_putstr("rra\n");
-			curr += ft_revrotate(a, NULL);
+			a->curr += ft_revrotate(a, NULL);
 		}
 	}
-	curr += slist_of_three(a);
-	curr += empty_list(a, b);
-	return (curr);
+	a->curr += slist_of_three(a);
+	a->curr += empty_list(a, b);
+	return (a->curr);
 }
 
 int	slist_of_three(t_ps *clist)
@@ -119,7 +116,7 @@ int	ft_sort(t_ps *a, t_ps *b, int wsort)
 	{
 		ft_putstr("sa\n");
 		curr += ft_swap_ab(a, NULL);
-		curr += ft_simplesort(a);	
+		curr += ft_simplesort(a);
 	}
 	else if (wsort == 4)
 	{

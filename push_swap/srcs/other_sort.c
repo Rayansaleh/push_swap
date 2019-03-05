@@ -6,7 +6,7 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:39:53 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/01/28 18:56:35 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:43:07 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ int	ft_is_int(char **nblist)
 		while (nblist[i][j])
 		{
 			if (!(nblist[i][j] >= '0' && nblist[i][j] <= '9'))
-				return(0);
+				return (0);
 			j++;
 		}
 	}
 	return (1);
 }
 
-int 	ft_is_intmax(char **nblist)
+int	ft_is_intmax(char **nblist)
 {
 	int i;
 
@@ -79,7 +79,7 @@ int 	ft_is_intmax(char **nblist)
 			return (0);
 		}
 	}
-	return(1);
+	return (1);
 }
 
 int	ft_is_twice(char **nblist)

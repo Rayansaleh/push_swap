@@ -6,20 +6,19 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 17:56:34 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/03/02 18:11:41 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:58:57 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "../libft/includes/libft.h"
-#include <stdio.h>
 
 void	fill_list(t_ps *ret, char **av)
 {
 	int	*tmp;
 	int	i;
 
-	i = ret->size + 1; 
+	i = ret->size + 1;
 	tmp = ret->list;
 	while (--i)
 	{
@@ -59,12 +58,13 @@ void	ft_push_swap(t_ps a)
 		ft_putstr("sa\n");
 		ft_swap_ab(&a, NULL);
 	}
+	free(b.list);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_ps	a;
-	int	i;
+	int		i;
 
 	if (ac < 2)
 		return (0);
@@ -76,7 +76,6 @@ int	main(int ac, char **av)
 	a = create_list(av);
 	i = a.size;
 	ft_push_swap(a);
-	while (--i >= 0)
-		printf("%d\n", a.list[i]);
+	free(a.list);
 	return (0);
 }

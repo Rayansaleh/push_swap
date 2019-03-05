@@ -6,15 +6,15 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 17:31:02 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/03/02 16:29:52 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:42:07 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int ft_swap_ab(t_ps *a, t_ps *b)
+int	ft_swap_ab(t_ps *a, t_ps *b)
 {
-    int *tmp;
+	int *tmp;
 	int size;
 	int temp;
 
@@ -23,14 +23,14 @@ int ft_swap_ab(t_ps *a, t_ps *b)
 	if (a->size < 2)
 		return (0);
 	temp = tmp[size - 1];
-	tmp[size -1] = tmp[size - 2];
+	tmp[size - 1] = tmp[size - 2];
 	tmp[size - 2] = temp;
 	if (b)
 		ft_swap_ab(b, NULL);
 	return (1);
 }
 
-int ft_push(t_ps *a, t_ps *b)
+int	ft_push(t_ps *a, t_ps *b)
 {
 	int *ta;
 	int *tb;
@@ -45,7 +45,7 @@ int ft_push(t_ps *a, t_ps *b)
 	return (1);
 }
 
-int ft_rotate(t_ps *a, t_ps *b)
+int	ft_rotate(t_ps *a, t_ps *b)
 {
 	int temp;
 	int size;
@@ -64,7 +64,7 @@ int ft_rotate(t_ps *a, t_ps *b)
 	return (1);
 }
 
-int ft_revrotate(t_ps *a, t_ps *b)
+int	ft_revrotate(t_ps *a, t_ps *b)
 {
 	int temp;
 	int *tmp;

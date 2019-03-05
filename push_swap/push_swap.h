@@ -6,7 +6,7 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 17:43:57 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/03/02 19:08:57 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:58:56 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ typedef struct	s_ps
 {
 	int			*list;
 	int			size;
+	int			curr;
+	int			i_max;
 }				t_ps;
 
 int				ft_find_max(t_ps s, int *max);

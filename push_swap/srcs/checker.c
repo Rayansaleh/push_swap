@@ -6,7 +6,7 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:32:47 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/03/02 19:08:48 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:45:10 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	fill_check_list(t_ps *ret, char **av)
 	while (++i < ret->size + 1)
 	{
 		*tmp = ft_atoi(av[i]);
-		tmp++;		
+		tmp++;
 	}
 }
 
@@ -44,7 +44,7 @@ t_ps	create_checker_list(char **av)
 	return (ret);
 }
 
-void ft_checker(t_ps *a, t_ps *b, char **tst)
+void	ft_checker(t_ps *a, t_ps *b, char **tst)
 {
 	if (**tst == 's')
 	{
@@ -67,12 +67,25 @@ void ft_checker(t_ps *a, t_ps *b, char **tst)
 		{
 			(*tst)++;
 			(**tst == 'a') ? ft_check_revrotate(a) : 0;
-			(**tst == 'b') ? ft_check_revrotate(b) : 0;	
+			(**tst == 'b') ? ft_check_revrotate(b) : 0;
 		}
 	}
 }
 
-int	main(int ac, char **av)
+int		valid_list(t_ps s)
+{
+	int i;
+
+	i = 0;
+	while (s.list[i] < s.list[i + 1] && s.list[i])
+		i++;
+	if (i + 1 >= s.size)
+		return (1);
+	else
+		return (0);
+}
+
+int		main(int ac, char **av)
 {
 	char	*tst;
 	t_ps	a;
@@ -92,10 +105,11 @@ int	main(int ac, char **av)
 		return (0);
 	while (get_next_line(0, &tst) != 0)
 		ft_checker(&a, &b, &tst);
-	while (++i < a.size)
-		printf("%d: %d\n", i, a.list[i]);
-	i = -1;
-	while (++i < b.size)
-		printf("%d: %d\n", i, b.list[i]);
+	if ((valid_list(a) == 1))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+	free(a.list);
+	free(b.list);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rsaleh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 15:35:47 by rsaleh            #+#    #+#             */
-/*   Updated: 2019/03/02 19:08:56 by rsaleh           ###   ########.fr       */
+/*   Updated: 2019/03/05 12:34:09 by rsaleh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		ft_remove(t_ps *a, int len)
 	int first;
 
 	i = 0;
-	printf("len:%d\n", len);
 	while (i < len && a->list[i] != -1)
 	{
 		if (i > 0)
